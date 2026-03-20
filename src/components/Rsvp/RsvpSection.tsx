@@ -16,10 +16,10 @@ export default function RsvpSection() {
     gsap.fromTo([textRef.current, formRef.current],
       { opacity: 0, y: 80, scale: 0.98 },
       {
-        opacity: 1, 
-        y: 0, 
+        opacity: 1,
+        y: 0,
         scale: 1,
-        duration: 1.5, 
+        duration: 1.5,
         stagger: 0.2, // Text reveals first, then the form
         ease: "power3.out",
         scrollTrigger: {
@@ -29,7 +29,7 @@ export default function RsvpSection() {
         }
       }
     );
-    
+
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
@@ -44,7 +44,7 @@ export default function RsvpSection() {
     <section className={styles.rsvpContainer}>
       {/* Dynamic Floating Form Card */}
       <div className={styles.contentWrapper}>
-        
+
         {/* RSVP Topology Component */}
         <div className={styles.textContainer} ref={textRef}>
           <h2 className={styles.title}>Kindly RSVP</h2>
@@ -56,16 +56,15 @@ export default function RsvpSection() {
 
         {/* Input Interactive DOM */}
         <form className={styles.rsvpForm} ref={formRef} onSubmit={handleSubmit}>
-          
+
           <div className={styles.inputGroup}>
             <input type="text" id="name" required placeholder="Full Name(s)" className={styles.inputField} />
           </div>
-          
+
           <div className={styles.inputGroup}>
             <select id="attendance" required className={styles.inputField} defaultValue="">
               <option value="" disabled hidden>Will you be attending?</option>
               <option value="yes">Joyfully Accepts!</option>
-              <option value="no">Regretfully Declines</option>
             </select>
           </div>
 
@@ -77,7 +76,7 @@ export default function RsvpSection() {
             Send RSVP Status
           </button>
         </form>
-        
+
       </div>
     </section>
   );

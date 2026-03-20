@@ -1,17 +1,5 @@
-You are given a task to integrate an existing React component in the codebase
+"use client";
 
-The codebase should support:
-- shadcn project structure  
-- Tailwind CSS
-- Typescript
-
-If it doesn't, provide instructions on how to setup project via shadcn CLI, install Tailwind or Typescript.
-
-Determine the default path for components and styles. 
-If default path for components is not /components/ui, provide instructions on why it's important to create this folder
-Copy-paste this component to /components/ui folder:
-```tsx
-isometric-wave-grid-background.tsx
 import React, { useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
@@ -176,65 +164,12 @@ const IsoLevelWarp = ({
   return (
     <div
       ref={containerRef}
-      className={cn("absolute inset-0 z-0 overflow-hidden bg-black", className)}
+      className={cn("absolute inset-0 z-0 overflow-hidden bg-transparent", className)}
       {...props}
     >
-      <canvas ref={canvasRef} className="block w-full h-full" />
-      
-      {/* Optional: Vignette overlay for depth */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#000_100%)] opacity-80 pointer-events-none" />
+      <canvas ref={canvasRef} className="block w-full h-full pointer-events-none" />
     </div>
   );
 };
 
 export default IsoLevelWarp;
-
-demo.tsx
-import React from "react";
-import IsoLevelWarp from "@/components/ui/isometric-wave-grid-background";
-
-export default function HeroDemo() {
-  return (
-    <div className="relative w-full h-screen overflow-hidden font-sans">
-      
-      {/* BACKGROUND: The New Trend */}
-      <IsoLevelWarp 
-        // Cyber-Violet Color
-        color="100, 50, 250" 
-        density={50} 
-        speed={1.5}
-      />
-
-      {/* CONTENT LAYER */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
-        
-        {/* Hero Text */}
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white mb-6 drop-shadow-2xl">
-          The Fabric of <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-muted">
-            Digital Reality.
-          </span>
-        </h1>
-
-      </div>
-    </div>
-  );
-}
-```
-
-Implementation Guidelines
- 1. Analyze the component structure and identify all required dependencies
- 2. Review the component's argumens and state
- 3. Identify any required context providers or hooks and install them
- 4. Questions to Ask
- - What data/props will be passed to this component?
- - Are there any specific state management requirements?
- - Are there any required assets (images, icons, etc.)?
- - What is the expected responsive behavior?
- - What is the best place to use this component in the app?
-
-Steps to integrate
- 0. Copy paste all the code above in the correct directories
- 1. Install external dependencies
- 2. Fill image assets with Unsplash stock images you know exist
- 3. Use lucide-react icons for svgs or logos if component requires them

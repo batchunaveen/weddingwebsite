@@ -1,15 +1,18 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import gsap from 'gsap';
 import styles from './page.module.scss';
 import EventsSection from '@/components/Events/EventsSection';
 import RsvpSection from '@/components/Rsvp/RsvpSection';
+import IsoLevelWarp from '@/components/ui/isometric-wave-grid-background';
 
 
 
 export default function Home() {
+  const [isUnlocked, setIsUnlocked] = useState(false);
+
   const symbolRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
   const garlandsRef = useRef<HTMLDivElement>(null);
@@ -87,8 +90,17 @@ export default function Home() {
 
   return (
     <div className={styles.pageWrapper}>
-      {/* SECTION 1: Intro Hero */}
+
+      {/* SECTION 1: Cinematic Intro Map */}
       <section className={styles.heroSection}>
+
+        {/* Cinematic Underlay Grid Canvas */}
+        <IsoLevelWarp 
+          color="251, 112, 5" // Strictly overrides grid stroke to Deep Marigold 
+          speed={0.6} 
+          density={50}
+          className="opacity-30 pointer-events-none mix-blend-multiply" 
+        />
         {/* Decorative Garlands (Top) */}
         <div className={styles.garlandsTop} ref={garlandsRef}>
           <div className={styles.garlandPattern}></div>
@@ -131,7 +143,11 @@ export default function Home() {
             className={styles.inviteButton} 
             ref={buttonRef}
             onClick={() => {
-              document.getElementById('invite-card')?.scrollIntoView({ behavior: 'smooth' });
+              setIsUnlocked(true);
+              // SetTimeout ensures React flushes the DOM nodes into existence before attempting scroll mapping natively traversing physics
+              setTimeout(() => {
+                document.getElementById('invite-card')?.scrollIntoView({ behavior: 'smooth' });
+              }, 100);
             }}
           >
             Save the Date
@@ -140,11 +156,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 2: Map of Wedding Events / Cards Grid */}
-      <EventsSection />
-
-      {/* SECTION 3: Bottom Scroll RSVP Interactive Form */}
-      <RsvpSection />
+      {/* SECTION 2 & 3: Timeline & RSVP (Locked Behind User Interaction) */}
+      {isUnlocked && (
+        <>
+          <EventsSection />
+          <RsvpSection />
+        </>
+      )}
 
     </div>
   );
