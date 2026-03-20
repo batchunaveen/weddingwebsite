@@ -1,0 +1,351 @@
+.mainContainer {
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: #FFFCDC; /* Exact warm cream from the screenshot */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Optional mock garland if you don't have the image file yet */
+.garlandsTop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: clamp(80px, 15vw, 150px);
+  background: 
+    radial-gradient(circle at 10% 0, #fb7005 10px, transparent 11px),
+    radial-gradient(circle at 30% 0, #ffd700 10px, transparent 11px),
+    radial-gradient(circle at 50% 0, #fb7005 12px, transparent 13px),
+    radial-gradient(circle at 70% 0, #ffd700 10px, transparent 11px),
+    radial-gradient(circle at 90% 0, #fb7005 10px, transparent 11px);
+  /* Replace top gradient with `background-image: url('/garland.png')` */
+  background-size: cover;
+  background-position: top center;
+  pointer-events: none;
+}
+
+.pageWrapper {
+  width: 100vw;
+  overflow-x: hidden;
+  background-color: #FFFCDC; /* Main base */
+  position: relative;
+}
+
+.heroSection {
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* We must change ballsContainer to fixed so the petal rain follows you as you scroll down */
+.ballsContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 100; /* Rain falls over the whole site, even the card */
+}
+
+/* Beautiful 2nd Screen Section */
+.inviteSection {
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  overflow: hidden; /* For blurred bg containment */
+}
+
+/* Atmospheric glowing image background */
+.sectionBackground {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 1;
+
+  .blurImage {
+    object-fit: cover;
+    filter: blur(60px) brightness(0.3) saturate(2); /* Creates beautiful ambient colored lighting from the picture */
+    transform: scale(1.15); /* Prevents harsh unblurred edges */
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at center, rgba(10,5,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+  }
+}
+
+.inviteContent {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
+}
+
+.detailsLeft {
+  flex: 1;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  
+  .sectionTitle {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(3.5rem, 6vw, 6rem);
+    color: #fb7005; /* Use same Marigold Orange to match the theme */
+    margin-bottom: 2rem;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+  }
+  
+  .locationBlock {
+    background: rgba(255, 255, 255, 0.05); /* subtle glassmorphism */
+    backdrop-filter: blur(15px);
+    border-left: 4px solid #fb7005;
+    padding: 2.5rem;
+    border-radius: 0 16px 16px 0;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    
+    h3 {
+      font-family: system-ui, -apple-system, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: #FFFCDC;
+      margin: 0 0 1rem 0;
+    }
+    
+    p {
+      font-size: 1.25rem;
+      margin: 0.5rem 0;
+      line-height: 1.6;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.9);
+    }
+  }
+}
+
+.cardRight {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* Physical Paper Card representation */
+.weddingCard {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1), 0 5px 15px rgba(251, 112, 5, 0.05);
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgba(251, 112, 5, 0.1);
+  z-index: 10;
+}
+
+/* Traditional elegant dashed gold border inside the paper card */
+.cardInnerBorder {
+  position: absolute;
+  top: 15px; left: 15px; right: 15px; bottom: 15px;
+  border: 1px dashed #fb7005;
+  border-radius: 8px;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.cardTitle {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  color: #fb7005;
+  margin: 0 0 2rem 0;
+  z-index: 2;
+  text-align: center;
+}
+
+.cardImageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5; /* Traditional portrait standard ratio */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  margin-bottom: 2.5rem;
+  z-index: 2;
+  background-color: #f4e8c1; /* Loading skeleton background */
+}
+
+.cardDate {
+  font-family: system-ui, -apple-system, sans-serif;
+  text-transform: uppercase;
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  color: #fb7005;
+  letter-spacing: 8px;
+  font-weight: 400;
+  z-index: 2;
+  margin: 0;
+  text-align: center;
+}
+
+.rose {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* Deep vibrant rose red/pink */
+  color: #e91e63; /* Pinkish red petal color */
+  opacity: 0; 
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+  
+  svg {
+    width: 100%;
+    height: 100%;
+    transform-origin: center center;
+    transform: rotate(45deg);
+  }
+}
+
+
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+
+.ganeshaWrapper {
+  display: flex;
+  flex-direction: column; /* Stack the crest over the card */
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  z-index: 5;
+}
+
+.omSymbolMini {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 3rem; 
+  color: #fb7005;
+  margin-bottom: -22px; /* Drops the crest precisely over the Wedding Card top border */
+  z-index: 20;
+  position: relative;
+  background-color: #FFFCDC; /* Uses Page background to clip the border underneath */
+  padding: 0 15px;
+  border-radius: 50%;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.ganeshaImageWrapper {
+  position: relative;
+  width: clamp(180px, 28vw, 320px);
+  aspect-ratio: 2 / 3;
+  margin-bottom: 2vh;
+  
+  /* Thick classic wedding card frame structure */
+  background-color: #fffff8; 
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(251, 112, 5, 0.2);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.08), 
+    0 4px 12px rgba(251, 112, 5, 0.15);
+
+  /* Delicate metallic internal double-stroke border */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 6px; left: 6px; right: 6px; bottom: 6px;
+    border: 1.5px solid #fb7005;
+    border-radius: 12px;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0.7;
+  }
+  
+  .blendedGanesha {
+    object-fit: cover;
+    border-radius: 8px;
+    /* We calculate exact inner bounds since NextJS `fill` imposes implicit absolute 100% dimensions */
+    position: absolute !important;
+    top: 12px !important;
+    left: 12px !important;
+    width: calc(100% - 24px) !important;
+    height: calc(100% - 24px) !important;
+  }
+}
+
+.scriptText {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: #fb7005; /* Deep Marigold Orange */
+  letter-spacing: 2px;
+  text-align: center;
+  margin: 0;
+  padding: 0 20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.coupleNames {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(3rem, 8vw, 5rem);
+  color: #fb7005;
+  margin: 2rem 0 0.5rem 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.romanticSubtext {
+  font-family: system-ui, -apple-system, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+  color: #fb7005; /* Matches Names */
+  margin: 0.5rem 0 3rem 0;
+  font-weight: 300;
+  text-align: center;
+  padding: 0 10px;
+}
+
+.inviteButton {
+  background-color: #fb7005; /* Same color as names */
+  color: #FFFCDC; /* Cream text */
+  border: none;
+  border-radius: 30px;
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  text-transform: uppercase;
+  cursor: pointer;
+  letter-spacing: 2px;
+  box-shadow: 0 4px 15px rgba(251, 112, 5, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 20;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(251, 112, 5, 0.4);
+  }
+}

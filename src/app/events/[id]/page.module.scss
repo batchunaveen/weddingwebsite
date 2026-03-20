@@ -1,0 +1,131 @@
+.eventMain {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #0a0604; /* Cinema Dark background extends globally below */
+  overflow-x: hidden;
+}
+
+.backButton {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  color: #FFFCDC;
+  font-family: system-ui, -apple-system, sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  z-index: 100;
+  text-decoration: none;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 252, 220, 0.1);
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: rgba(251, 112, 5, 0.6);
+  }
+}
+
+.heroSection {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroBg {
+  object-fit: cover;
+  z-index: 1;
+}
+
+.vignetteOverlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at center, transparent 30%, rgba(10, 6, 4, 0.9) 100%);
+  z-index: 2;
+}
+
+.heroTextContent {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 15vh;
+}
+
+.ceremonyLabel {
+  font-family: system-ui, -apple-system, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  color: #fb7005;
+  margin-bottom: -15px;
+  font-size: 1rem;
+}
+
+.eventTitle {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 400;
+  margin: 0;
+  background: linear-gradient(to bottom, #ffffff, #ffe1a8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #fff; /* fallback */
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+}
+
+.separator {
+  width: 80px;
+  height: 2px;
+  background-color: #fb7005;
+  margin: 1.5rem 0;
+}
+
+.storySection {
+  position: relative;
+  width: 100vw;
+  min-height: 50vh;
+  z-index: 5;
+  background-color: #0a0604;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10vh 5vw;
+}
+
+.storyCard {
+  background-color: #FFFCDC;
+  padding: 4rem;
+  border-radius: 12px;
+  max-width: 800px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 0 0 1px rgba(251, 112, 5, 0.3);
+}
+
+.timeLabel {
+  font-family: system-ui, -apple-system, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: #0a0604;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.storyDescription {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  line-height: 1.8;
+  color: #2c1a0e;
+  margin: 0;
+  /* Deep Marigold elegant quote-like style */
+  border-left: 3px solid #fb7005;
+  border-right: 3px solid #fb7005;
+  padding: 0 20px;
+}
