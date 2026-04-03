@@ -10,7 +10,7 @@ export default function HaldiChapter({ groupRef }: { groupRef: React.RefObject<T
       <spotLight position={[-5, 10, 5]} angle={0.8} penumbra={0.5} intensity={2.5} color="#ffc30b" castShadow />
       
 
-      <ImagePlane url="/images/Haldi.png" position={[-2, 0, 0]} rotation={[0, 0.2, -0.05]} />
+      <ImagePlane url="/images/Haldi_Final.png" position={[-2, 0, 0]} rotation={[0, 0.2, -0.05]} />
     </group>
   );
 }

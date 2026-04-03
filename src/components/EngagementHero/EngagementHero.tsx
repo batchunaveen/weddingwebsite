@@ -20,7 +20,7 @@ export default function EngagementHero() {
       <div className={styles.rightColumn}>
         <div className={styles.photoCard}>
           <Image 
-            src="/images/Engagement.png" 
+            src="/images/Engagement_Final.png" 
             alt="The Engagement Couple"
             fill
             className={styles.photoImage}

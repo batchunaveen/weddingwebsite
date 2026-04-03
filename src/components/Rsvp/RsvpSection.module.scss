@@ -12,24 +12,25 @@
 }
 
 .contentWrapper {
-  max-width: 650px;
+  max-width: 1200px; /* Slightly wider to give the form more room */
   width: 100%;
   background-color: #ffffff;
   border-radius: 24px;
   padding: 4.5rem;
   box-shadow: 0 40px 100px rgba(0, 0, 0, 0.08), inset 0 0 0 1px rgba(251, 112, 5, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1.1fr 1.6fr; /* Let the form take more space */
+  gap: 4rem;
+  align-items: stretch; /* So height is consistent */
   will-change: transform, opacity;
 }
 
-.textContainer {
+.leftSide {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-bottom: 3.5rem;
+  align-items: flex-start;
+  justify-content: center; /* Center the text vertically next to the tall form */
+  text-align: left;
   will-change: transform, opacity;
 }
 
@@ -42,6 +43,16 @@
   font-weight: 400;
 }
 
+.subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.4rem, 4vw, 1.8rem);
+  color: #d15a00;
+  font-style: italic;
+  margin: 0.5rem 0 0 0;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
 .separator {
   width: 50px;
   height: 2px;
@@ -52,75 +63,53 @@
 
 .subtext {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   color: #2c1a0e;
   line-height: 1.6;
-  margin: 0;
+  margin: 0 0 2rem 0;
 }
 
-.rsvpForm {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  will-change: transform, opacity;
-}
-
-.inputGroup {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.inputField {
-  width: 100%;
-  padding: 16px 24px;
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 1rem;
-  color: #0a0604;
-  background-color: #fafafa;
-  border: 1.5px solid rgba(251, 112, 5, 0.15);
-  border-radius: 12px;
-  outline: none;
-  transition: all 0.3s ease;
-
-  &:focus {
-    border-color: #fb7005;
-    box-shadow: 0 0 0 4px rgba(251, 112, 5, 0.1);
-    background-color: #ffffff;
-  }
+.eventList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2.5rem 0;
   
-  &::placeholder {
-    color: #9fa0a0;
-  }
-}
+  li {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 1.1rem;
+    color: #4a3320;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 
-/* Custom down-arrow implementation explicitly built over the `<select>` drop-down! */
-select.inputField {
-  appearance: none;
-  cursor: pointer;
-  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23fb7005%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
-  background-repeat: no-repeat;
-  background-position: right 1.2rem top 50%;
-  background-size: 0.65rem auto;
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: #fb7005;
+      border-radius: 50%;
+    }
+  }
 }
 
 .submitBtn {
-  margin-top: 1.5rem;
+  display: inline-block;
   background-color: #fb7005;
   color: #FFFCDC; /* Match the canvas background */
   border: none;
   border-radius: 30px;
-  padding: 18px 45px;
-  font-size: 1.1rem;
+  padding: 16px 40px;
+  font-size: 1rem;
   font-family: system-ui, -apple-system, sans-serif;
   text-transform: uppercase;
   font-weight: 600;
   cursor: pointer;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
+  text-decoration: none;
   box-shadow: 0 10px 25px rgba(251, 112, 5, 0.25);
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-  align-self: center;
 
   &:hover {
     transform: translateY(-4px) scale(1.02);
@@ -133,8 +122,67 @@ select.inputField {
   }
 }
 
-@media (max-width: 768px) {
+.rightSide {
+  width: 100%;
+  height: 100%;
+  min-height: 1250px; /* Tall enough for desktop without an internal scrollbar */
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: #ffffff;
+  border: 1px solid rgba(251, 112, 5, 0.1);
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.02);
+  will-change: transform, opacity;
+}
+
+.iframeStyle {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+@media (max-width: 968px) {
   .contentWrapper {
+    grid-template-columns: 1fr;
     padding: 3rem 2rem;
+    gap: 2.5rem;
+  }
+  
+  .leftSide {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .eventList {
+    text-align: left;
+    margin: 0 auto 2.5rem auto;
+  }
+  
+  .rightSide {
+    /* Google Forms stack questions on tablets, needing more height */
+    min-height: 1400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contentWrapper {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+
+  .subtitle {
+    font-size: 1.4rem;
+  }
+
+  .subtext {
+    font-size: 1.2rem;
+  }
+
+  .rightSide {
+    /* Phones require the absolute most height since everything stacks vertically */
+    min-height: 1600px; 
+    border-radius: 12px;
   }
 }

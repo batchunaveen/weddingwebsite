@@ -38,12 +38,14 @@
 
 .heroSection {
   position: relative;
-  min-height: 100vh;
+  min-height: 100svh; /* svh respects mobile address bars */
   width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
 }
 
 /* We must change ballsContainer to fixed so the petal rain follows you as you scroll down */
@@ -61,13 +63,14 @@
 /* Beautiful 2nd Screen Section */
 .inviteSection {
   position: relative;
-  min-height: 100vh;
+  min-height: 100svh;
   width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4rem 2rem;
+  padding: clamp(3rem, 8vw, 5rem) clamp(1rem, 5vw, 2rem);
   overflow: hidden; /* For blurred bg containment */
+  box-sizing: border-box;
 }
 
 /* Atmospheric glowing image background */
@@ -315,6 +318,32 @@
   color: #fb7005;
   margin: 2rem 0 0.5rem 0;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+
+  /* Mobile-friendly flex layout */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  row-gap: 5px;
+
+  .coupleNamePart {
+    display: inline-block;
+  }
+
+  .ampersand {
+    display: inline-block;
+    margin: 0 20px;
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    
+    .ampersand {
+      margin: 10px 0;
+      transform: scale(0.8);
+    }
+  }
 }
 
 .romanticSubtext {

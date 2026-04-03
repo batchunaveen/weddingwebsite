@@ -9,7 +9,7 @@ export default function EngagementScene() {
   const coupleRef = useRef<THREE.Group>(null);
   
   // Automatically loads the couple's isolated photo
-  const texture = useTexture('/images/Engagement.png');
+  const texture = useTexture('/images/Engagement_Final.png');
   texture.colorSpace = THREE.SRGBColorSpace;
 
   // Cinematic Bulb Generator

@@ -134,9 +134,9 @@ export default function Home() {
           </h1>
 
           <h2 className={styles.coupleNames}>
-            <span ref={groomRef} style={{ display: 'inline-block' }}>Naveen Batchu</span>
-            <span ref={ampersandRef} style={{ display: 'inline-block', margin: '0 20px' }}>&amp;</span>
-            <span ref={brideRef} style={{ display: 'inline-block' }}>Divya Bayya</span>
+            <span ref={groomRef} className={styles.coupleNamePart}>Naveen Batchu</span>
+            <span ref={ampersandRef} className={styles.ampersand}>&amp;</span>
+            <span ref={brideRef} className={styles.coupleNamePart}>Divya Bayya</span>
           </h2>
           
           <button 
@@ -156,9 +156,39 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 2 & 3: Timeline & RSVP (Locked Behind User Interaction) */}
+      {/* SECTIONS 2, 3 & 4 (Locked Behind User Interaction) */}
       {isUnlocked && (
         <>
+          {/* E-Invite Section */}
+          <section id="invite-card" className={styles.inviteSection}>
+            <div className={styles.sectionBackground}>
+              <Image src="/images/Marriage.png" alt="Background Blur" fill className={styles.blurImage} />
+              <div className={styles.overlay}></div>
+            </div>
+
+            <div className={styles.inviteContent}>
+              <div className={styles.detailsLeft}>
+                <h2 className={styles.sectionTitle}>You're Invited</h2>
+                <div className={styles.locationBlock}>
+                  <h3>Join Us In Celebration</h3>
+                  <p>Together with our families, we joyfully invite you to our wedding.</p>
+                  <p>Your beautiful presence and blessings mean the world to us as we begin this new journey.</p>
+                </div>
+              </div>
+
+              <div className={styles.cardRight}>
+                <div className={styles.weddingCard}>
+                  <div className={styles.cardInnerBorder}></div>
+                  <h3 className={styles.cardTitle}>Naveen & Divya</h3>
+                  <div className={styles.cardImageWrapper}>
+                    <Image src="/images/Engagement_Final.png" alt="Couple Engagement" fill style={{ objectFit: 'cover' }} />
+                  </div>
+                  <p className={styles.cardDate}>April 25th 9:30 AM</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
           <EventsSection />
           <RsvpSection />
         </>

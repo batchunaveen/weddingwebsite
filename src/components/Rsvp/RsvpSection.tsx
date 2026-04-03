@@ -8,12 +8,13 @@ import styles from './RsvpSection.module.scss';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function RsvpSection() {
-  const formRef = useRef<HTMLFormElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const leftSideRef = useRef<HTMLDivElement>(null);
+  const rightSideRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Beautiful fade-up reveal perfectly mapped for the RSVP container
-    gsap.fromTo([textRef.current, formRef.current],
+    gsap.fromTo([leftSideRef.current, rightSideRef.current],
       { opacity: 0, y: 80, scale: 0.98 },
       {
         opacity: 1,
@@ -23,7 +24,7 @@ export default function RsvpSection() {
         stagger: 0.2, // Text reveals first, then the form
         ease: "power3.out",
         scrollTrigger: {
-          trigger: textRef.current,
+          trigger: sectionRef.current,
           start: "top 90%", // Trigger nicely right at the final scroll
           toggleActions: "play none none reverse"
         }
@@ -35,47 +36,54 @@ export default function RsvpSection() {
     };
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert("Thank you for your RSVP! We're thrilled to celebrate with you.");
-  };
+  const googleFormLink = "https://docs.google.com/forms/d/e/1FAIpQLSfB_ameP3DVlliy2Y6ZH5Bj6DBWY2nmvgx2CZJlnqWmi-9ngQ/viewform";
+  const googleFormEmbed = "https://docs.google.com/forms/d/e/1FAIpQLSfB_ameP3DVlliy2Y6ZH5Bj6DBWY2nmvgx2CZJlnqWmi-9ngQ/viewform?embedded=true";
 
   return (
-    <section className={styles.rsvpContainer}>
-      {/* Dynamic Floating Form Card */}
+    <section id="rsvp" className={styles.rsvpContainer} ref={sectionRef}>
       <div className={styles.contentWrapper}>
 
-        {/* RSVP Topology Component */}
-        <div className={styles.textContainer} ref={textRef}>
-          <h2 className={styles.title}>Kindly RSVP</h2>
+        {/* Left Side: Information */}
+        <div className={styles.leftSide} ref={leftSideRef}>
+          <h2 className={styles.title}>RSVP</h2>
+          <h3 className={styles.subtitle}>Kindly let us know which events you’ll be joining</h3>
           <div className={styles.separator}></div>
           <p className={styles.subtext}>
-            We would be absolutely honored by your presence. Please let us know if you and your family will be joining us.
+            We would be delighted to celebrate with you. Please fill out the RSVP form and select the event or events you’ll be attending.
           </p>
+          
+          <ul className={styles.eventList}>
+            <li>Engagement</li>
+            <li>Haldi</li>
+            <li>Mehndi</li>
+            <li>Reception</li>
+            <li>Wedding</li>
+          </ul>
+
+          <a 
+            href={googleFormLink} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className={styles.submitBtn}
+          >
+            Open RSVP Form
+          </a>
         </div>
 
-        {/* Input Interactive DOM */}
-        <form className={styles.rsvpForm} ref={formRef} onSubmit={handleSubmit}>
-
-          <div className={styles.inputGroup}>
-            <input type="text" id="name" required placeholder="Full Name(s)" className={styles.inputField} />
-          </div>
-
-          <div className={styles.inputGroup}>
-            <select id="attendance" required className={styles.inputField} defaultValue="">
-              <option value="" disabled hidden>Will you be attending?</option>
-              <option value="yes">Joyfully Accepts!</option>
-            </select>
-          </div>
-
-          <div className={styles.inputGroup}>
-            <input type="number" id="guests" min="1" max="10" placeholder="Number of Guests" className={styles.inputField} />
-          </div>
-
-          <button type="submit" className={styles.submitBtn}>
-            Send RSVP Status
-          </button>
-        </form>
+        {/* Right Side: Embedded Form */}
+        <div className={styles.rightSide} ref={rightSideRef}>
+          <iframe 
+            src={googleFormEmbed} 
+            className={styles.iframeStyle}
+            title="RSVP Form"
+            frameBorder="0"
+            marginHeight={0}
+            marginWidth={0}
+            allowFullScreen
+          >
+            Loading…
+          </iframe>
+        </div>
 
       </div>
     </section>

@@ -4,9 +4,9 @@ import { notFound } from 'next/navigation';
 import styles from './page.module.scss';
 
 const eventDetails = {
-  haldi: { title: 'Haldi Ceremony', img: '/images/Haldi.png', time: '10:00 AM, Sunday, 26th April 2026', desc: 'A beautiful morning filled with laughter, blessings, and the vibrant splash of turmeric to commence our lifelong journey.' },
+  haldi: { title: 'Haldi Ceremony', img: '/images/Haldi_Final.png', time: '10:00 AM, Sunday, 26th April 2026', desc: 'A beautiful morning filled with laughter, blessings, and the vibrant splash of turmeric to commence our lifelong journey.' },
   'pelli-kuturu': { title: 'Pelli Kuturu', img: '/images/PelliKuturu.png', time: '3:00 PM, Sunday, 26th April 2026', desc: 'The elegant transition into the bride and groom alongside traditional rituals spanning generations.' },
-  engagement: { title: 'The Engagement', img: '/images/Engagement.png', time: '7:30 PM, Sunday, 26th April 2026', desc: 'An intimate evening where families unite and we publicly exchange rings, declaring our loving commitment to one another.' },
+  engagement: { title: 'The Engagement', img: '/images/Engagement_Final.png', time: '7:30 PM, Sunday, 26th April 2026', desc: 'An intimate evening where families unite and we publicly exchange rings, declaring our loving commitment to one another.' },
   marriage: { title: 'The Marriage', img: '/images/Marriage.png', time: '9:30 AM (Muhurtham), Monday, 27th April 2026', desc: 'The most auspicious hour where we tie the holy knot, stepping into a new chapter of our lives together.' },
   reception: { title: 'Wedding Reception', img: '/images/Reception.png', time: '7:00 PM, Monday, 27th April 2026', desc: 'Join us for a spectacular evening of dining, joy, and dancing as we celebrate our very first grand night as husband and wife.' }
 };
