@@ -6,8 +6,6 @@ import gsap from 'gsap';
 import styles from './page.module.scss';
 import EventsSection from '@/components/Events/EventsSection';
 import RsvpSection from '@/components/Rsvp/RsvpSection';
-import IsoLevelWarp from '@/components/ui/isometric-wave-grid-background';
-
 
 
 export default function Home() {
@@ -91,16 +89,9 @@ export default function Home() {
   return (
     <div className={styles.pageWrapper}>
 
-      {/* SECTION 1: Cinematic Intro Map */}
+      {/* SECTION 1: Cinematic Intro */}
       <section className={styles.heroSection}>
 
-        {/* Cinematic Underlay Grid Canvas */}
-        <IsoLevelWarp 
-          color="251, 112, 5" // Strictly overrides grid stroke to Deep Marigold 
-          speed={0.6} 
-          density={50}
-          className="opacity-30 pointer-events-none mix-blend-multiply" 
-        />
         {/* Decorative Garlands (Top) */}
         <div className={styles.garlandsTop} ref={garlandsRef}>
           <div className={styles.garlandPattern}></div>
@@ -162,7 +153,7 @@ export default function Home() {
           {/* E-Invite Section */}
           <section id="invite-card" className={styles.inviteSection}>
             <div className={styles.sectionBackground}>
-              <Image src="/images/Marriage.png" alt="Background Blur" fill className={styles.blurImage} />
+              <Image src="/images/LordVenkateswaraAndPadmavathi.jpg" alt="Background Blur" fill className={styles.blurImage} />
               <div className={styles.overlay}></div>
             </div>
 
@@ -171,19 +162,28 @@ export default function Home() {
                 <h2 className={styles.sectionTitle}>You're Invited</h2>
                 <div className={styles.locationBlock}>
                   <h3>Join Us In Celebration</h3>
-                  <p>Together with our families, we joyfully invite you to our wedding.</p>
-                  <p>Your beautiful presence and blessings mean the world to us as we begin this new journey.</p>
+                  <p>
+                    With the divine blessings of Sri Venkateswara Swamy &amp; Sri Padmavati Ammavaru,<br />
+                    together with our families, we joyfully invite you to our wedding.
+                  </p>
+                  <p>
+                    Your beautiful presence and blessings mean the world to us as we begin this new journey.
+                  </p>
                 </div>
               </div>
 
               <div className={styles.cardRight}>
                 <div className={styles.weddingCard}>
-                  <div className={styles.cardInnerBorder}></div>
-                  <h3 className={styles.cardTitle}>Naveen & Divya</h3>
                   <div className={styles.cardImageWrapper}>
-                    <Image src="/images/Engagement_Final.png" alt="Couple Engagement" fill style={{ objectFit: 'cover' }} />
+                    <Image
+                      src="/images/LordVenkateswaraAndPadmavathi.jpg"
+                      alt="Lord Venkateswara and Padmavathi"
+                      width={800}
+                      height={1000}
+                      style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
+                      priority
+                    />
                   </div>
-                  <p className={styles.cardDate}>April 25th 9:30 AM</p>
                 </div>
               </div>
             </div>

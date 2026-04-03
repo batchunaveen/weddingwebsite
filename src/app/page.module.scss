@@ -159,26 +159,19 @@
 .weddingCard {
   position: relative;
   width: 100%;
-  max-width: 500px;
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.1), 0 5px 15px rgba(251, 112, 5, 0.05);
-  padding: 3rem 2rem;
+  max-width: 600px; /* Increased from 450px to make the image significantly larger */
+  background-color: transparent; /* No more white background */
+  border-radius: 12px; /* Smooth rounded corners */
+  box-shadow: 
+    0 20px 50px rgba(0,0,0,0.2), 
+    0 5px 15px rgba(251, 112, 5, 0.1);
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid rgba(251, 112, 5, 0.1);
+  border: none; /* Removed thick white border */
   z-index: 10;
-}
-
-/* Traditional elegant dashed gold border inside the paper card */
-.cardInnerBorder {
-  position: absolute;
-  top: 15px; left: 15px; right: 15px; bottom: 15px;
-  border: 1px dashed #fb7005;
-  border-radius: 8px;
-  pointer-events: none;
-  opacity: 0.5;
+  overflow: hidden;
 }
 
 .cardTitle {
@@ -193,13 +186,9 @@
 .cardImageWrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 5; /* Traditional portrait standard ratio */
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-  margin-bottom: 2.5rem;
   z-index: 2;
-  background-color: #f4e8c1; /* Loading skeleton background */
+  background-color: #f4e8c1;
+  display: flex;
 }
 
 .cardDate {
@@ -238,6 +227,7 @@
   flex-direction: column;
   align-items: center;
   z-index: 10;
+  margin-top: -6vh; /* Pulls the entire block (card + text) upward */
 }
 
 .ganeshaWrapper {
@@ -245,7 +235,7 @@
   flex-direction: column; /* Stack the crest over the card */
   justify-content: center;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem; /* Pull the OM and text right up under the card natively */
   z-index: 5;
 }
 
@@ -316,7 +306,7 @@
   font-family: 'Great Vibes', cursive;
   font-size: clamp(3rem, 8vw, 5rem);
   color: #fb7005;
-  margin: 2rem 0 0.5rem 0;
+  margin: 0.5rem 0 1rem 0; /* Tightened from 2rem top to 0.5rem top to pull words up */
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
 
   /* Mobile-friendly flex layout */

@@ -163,7 +163,8 @@ export default function EventsSection() {
                 <Image
                   src={event.image}
                   alt={event.title}
-                  fill
+                  width={600}
+                  height={800}
                   className={styles.eventImage}
                   priority={index < 2}
                 />

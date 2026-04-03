@@ -12,25 +12,27 @@
 }
 
 .contentWrapper {
-  max-width: 1200px; /* Slightly wider to give the form more room */
+  max-width: 680px;
   width: 100%;
   background-color: #ffffff;
   border-radius: 24px;
-  padding: 4.5rem;
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.08), inset 0 0 0 1px rgba(251, 112, 5, 0.1);
-  display: grid;
-  grid-template-columns: 1.1fr 1.6fr; /* Let the form take more space */
-  gap: 4rem;
-  align-items: stretch; /* So height is consistent */
+  padding: clamp(2.5rem, 6vw, 5rem) clamp(2rem, 6vw, 5rem);
+  box-shadow:
+    0 40px 100px rgba(0, 0, 0, 0.07),
+    inset 0 0 0 1px rgba(251, 112, 5, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   will-change: transform, opacity;
 }
 
 .leftSide {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center; /* Center the text vertically next to the tall form */
-  text-align: left;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   will-change: transform, opacity;
 }
 
@@ -57,7 +59,7 @@
   width: 50px;
   height: 2px;
   background-color: #fb7005;
-  margin: 1.5rem 0;
+  margin: 1.5rem auto;
   border-radius: 2px;
 }
 
@@ -73,15 +75,18 @@
   list-style: none;
   padding: 0;
   margin: 0 0 2.5rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem 1.4rem;
   
   li {
     font-family: system-ui, -apple-system, sans-serif;
     font-size: 1.1rem;
     color: #4a3320;
-    margin-bottom: 0.8rem;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
 
     &::before {
       content: '';
@@ -90,6 +95,7 @@
       height: 8px;
       background-color: #fb7005;
       border-radius: 50%;
+      flex-shrink: 0;
     }
   }
 }
@@ -122,47 +128,6 @@
   }
 }
 
-.rightSide {
-  width: 100%;
-  height: 100%;
-  min-height: 1250px; /* Tall enough for desktop without an internal scrollbar */
-  border-radius: 16px;
-  overflow: hidden;
-  background-color: #ffffff;
-  border: 1px solid rgba(251, 112, 5, 0.1);
-  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.02);
-  will-change: transform, opacity;
-}
-
-.iframeStyle {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-@media (max-width: 968px) {
-  .contentWrapper {
-    grid-template-columns: 1fr;
-    padding: 3rem 2rem;
-    gap: 2.5rem;
-  }
-  
-  .leftSide {
-    align-items: center;
-    text-align: center;
-  }
-  
-  .eventList {
-    text-align: left;
-    margin: 0 auto 2.5rem auto;
-  }
-  
-  .rightSide {
-    /* Google Forms stack questions on tablets, needing more height */
-    min-height: 1400px;
-  }
-}
-
 @media (max-width: 480px) {
   .contentWrapper {
     padding: 2.5rem 1.25rem;
@@ -178,11 +143,5 @@
 
   .subtext {
     font-size: 1.2rem;
-  }
-
-  .rightSide {
-    /* Phones require the absolute most height since everything stacks vertically */
-    min-height: 1600px; 
-    border-radius: 12px;
   }
 }
