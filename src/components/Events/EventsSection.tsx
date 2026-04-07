@@ -8,6 +8,11 @@ import styles from './EventsSection.module.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const MAIN_VENUE = '3500 James Madison Hwy, Haymarket, VA 20169';
+const MAIN_VENUE_MAP = 'https://www.google.com/maps/search/?api=1&query=3500+James+Madison+Hwy+Haymarket+VA+20169';
+const MARRIAGE_VENUE = '1500 Volunteer Dr, Brunswick, MD 21716';
+const MARRIAGE_VENUE_MAP = 'https://www.google.com/maps/search/?api=1&query=1500+Volunteer+Dr+Brunswick+MD+21716';
+
 const events = [
   {
     id: 'engagement',
@@ -18,6 +23,8 @@ const events = [
     description: 'Beginning our forever with love and joy',
     themeColor: '#2b4036',
     bgLabel: 'Sage Green',
+    venue: MAIN_VENUE,
+    venueMap: MAIN_VENUE_MAP,
   },
   {
     id: 'mehndi',
@@ -28,6 +35,8 @@ const events = [
     description: 'Intricate patterns, joyful hearts — the Mehndi evening',
     themeColor: '#5c3317',
     bgLabel: 'Henna Brown',
+    venue: MAIN_VENUE,
+    venueMap: MAIN_VENUE_MAP,
   },
   {
     id: 'haldi',
@@ -38,6 +47,8 @@ const events = [
     description: 'A splash of yellow, a lot of love',
     themeColor: '#c58309',
     bgLabel: 'Turmeric Gold',
+    venue: MAIN_VENUE,
+    venueMap: MAIN_VENUE_MAP,
   },
   {
     id: 'pelli-koduku',
@@ -48,6 +59,8 @@ const events = [
     description: 'The groom\'s side rituals — charm, tradition & celebration',
     themeColor: '#b05a00',
     bgLabel: 'Saffron Dusk',
+    venue: MAIN_VENUE,
+    venueMap: MAIN_VENUE_MAP,
   },
   {
     id: 'pelli-kuturu',
@@ -58,6 +71,8 @@ const events = [
     description: 'The bridal preparations and traditional rituals',
     themeColor: '#8a3a41',
     bgLabel: 'Bridal Rose',
+    venue: MAIN_VENUE,
+    venueMap: MAIN_VENUE_MAP,
   },
   {
     id: 'marriage',
@@ -68,16 +83,8 @@ const events = [
     description: 'Tying the knot and stepping into a new life',
     themeColor: '#871a15',
     bgLabel: 'Auspicious Maroon',
-  },
-  {
-    id: 'reception',
-    title: 'Wedding Reception',
-    image: '/images/Reception.png',
-    date: 'Monday, 27th April 2026',
-    time: '7:00 PM',
-    description: 'An evening of celebration, dining, and dancing',
-    themeColor: '#0a1128',
-    bgLabel: 'Midnight Blue',
+    venue: MARRIAGE_VENUE,
+    venueMap: MARRIAGE_VENUE_MAP,
   },
 ];
 
@@ -132,9 +139,6 @@ export default function EventsSection() {
       <div className={styles.headerBlock}>
         <p className={styles.sectionEyebrow}>– Our Celebrations –</p>
         <h2 className={styles.sectionTitle}>Wedding Timeline</h2>
-        <p className={styles.sectionSubtitle}>
-          Tap a card to feel the vibe of each celebration
-        </p>
       </div>
 
       <div className={styles.cardsGrid}>
@@ -160,13 +164,10 @@ export default function EventsSection() {
 
               {/* Image */}
               <div className={styles.imageWrapper}>
-                <Image
+                <img
                   src={event.image}
                   alt={event.title}
-                  width={600}
-                  height={800}
                   className={styles.eventImage}
-                  priority={index < 2}
                 />
                 {/* Active overlay glow */}
                 {isActive && (

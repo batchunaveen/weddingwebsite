@@ -6,6 +6,7 @@ import gsap from 'gsap';
 import styles from './page.module.scss';
 import EventsSection from '@/components/Events/EventsSection';
 import RsvpSection from '@/components/Rsvp/RsvpSection';
+import VenueSection from '@/components/Venue/VenueSection';
 
 
 export default function Home() {
@@ -190,6 +191,7 @@ export default function Home() {
           </section>
 
           <EventsSection />
+          <VenueSection />
           <RsvpSection />
         </>
       )}
