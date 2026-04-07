@@ -48,19 +48,18 @@ export default function RsvpSection() {
           <p className={styles.subtext}>
             We would be delighted to celebrate with you. Please fill out the RSVP form and select the event or events you’ll be attending.
           </p>
-          
+
           <ul className={styles.eventList}>
             <li>Engagement</li>
             <li>Haldi</li>
             <li>Mehndi</li>
-            <li>Reception</li>
             <li>Wedding</li>
           </ul>
 
-          <a 
-            href={googleFormLink} 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            href={googleFormLink}
+            target="_blank"
+            rel="noopener noreferrer"
             className={styles.submitBtn}
           >
             Open RSVP Form
